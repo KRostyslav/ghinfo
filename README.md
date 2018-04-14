@@ -1,3 +1,6 @@
+# ghinfo
+:memo: Small angular app that fetches information from Github
+
 # Ghinfo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.8.
