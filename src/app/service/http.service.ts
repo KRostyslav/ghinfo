@@ -12,11 +12,11 @@ export class HttpService {
   }
 
   getUserInfo(username: string): Observable<any> {
-    return this._http.get(environment.baseURL + username + '?client_id=' + environment.client_id + '&client_secret=' + environment.client_sercret);
+    return this._http.get(environment.baseURL + username + '?client_id=' + environment.client_id + '&client_secret=' + environment.client_secret);
   }
 
   getUserRepos(username: string): Observable<any> {
-    return this._http.get(environment.baseURL + username + '/repos?client_id=' + environment.client_id + '&client_secret=' + environment.client_sercret + '&page=1&per_page=100');
+    return this._http.get(environment.baseURL + username + '/repos?client_id=' + environment.client_id + '&client_secret=' + environment.client_secret + '&page=1&per_page=100');
   }
 
   updateUser(username: string) {
