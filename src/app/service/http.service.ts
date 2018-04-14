@@ -6,14 +6,20 @@ import {environment} from '../../environments/environment';
 @Injectable()
 export class HttpService {
 
+  username;
+
   constructor(private _http: HttpClient) {
   }
 
-  getUserInfo(username): Observable<any> {
+  getUserInfo(username: string): Observable<any> {
     return this._http.get(environment.baseURL + username + '?client_id=' + environment.client_id + '&client_secret=' + environment.client_sercret);
   }
 
-  getUserRepos(username): Observable<any> {
-    return this._http.get(environment.baseURL + username + '/repos?client_id=' + environment.client_id + '&client_secret=' + environment.client_sercret);
+  getUserRepos(username: string): Observable<any> {
+    return this._http.get(environment.baseURL + username + '/repos?client_id=' + environment.client_id + '&client_secret=' + environment.client_sercret + '&page=1&per_page=100');
+  }
+
+  updateUser(username: string) {
+    this.username = username;
   }
 }

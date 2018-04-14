@@ -9,6 +9,7 @@ import {AppComponent} from './app.component';
 import {UserInfoComponent} from './components/user-info/user-info.component';
 import {ReposInfoComponent} from './components/repos-info/repos-info.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {NotFoundComponent} from './components/not-found/not-found.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [HttpService],
