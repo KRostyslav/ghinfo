@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {User} from '../../model/user';
+import {Component, OnInit} from '@angular/core';
+
 import {HttpService} from '../../service/http.service';
 
 @Component({
@@ -9,7 +9,7 @@ import {HttpService} from '../../service/http.service';
 })
 export class UserInfoComponent implements OnInit {
 
-  user: User;
+  user;
   notFound = true;
   username = `torvalds`;
 
