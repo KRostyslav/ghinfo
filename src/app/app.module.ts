@@ -1,12 +1,14 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
+import {AppRoutingModule} from './app-routing.module';
 
-import { AppComponent } from './app.component';
-import { UserInfoComponent } from './components/user-info/user-info.component';
-import { ReposInfoComponent } from './components/repos-info/repos-info.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import {HttpService} from './service/http.service';
+import {AppComponent} from './app.component';
+import {UserInfoComponent} from './components/user-info/user-info.component';
+import {ReposInfoComponent} from './components/repos-info/repos-info.component';
+import {NotFoundComponent} from './components/not-found/not-found.component';
 
 
 @NgModule({
@@ -18,9 +20,11 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

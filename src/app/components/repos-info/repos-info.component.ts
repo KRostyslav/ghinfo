@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpService} from '../../service/http.service';
 
 @Component({
   selector: 'gh-repos-info',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReposInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _httpService: HttpService) {
+    this._httpService.getUserRepos('krostyslav')
+      .subscribe((data) => {
+        console.info(data);
+      }, (error) => {
+        console.log(error);
+      });
+  }
 
   ngOnInit() {
   }
