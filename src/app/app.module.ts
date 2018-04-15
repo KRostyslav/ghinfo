@@ -9,7 +9,8 @@ import {AppComponent} from './app.component';
 import {UserInfoComponent} from './components/user-info/user-info.component';
 import {ReposInfoComponent} from './components/repos-info/repos-info.component';
 import {NotFoundComponent} from './components/not-found/not-found.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { SortPipe } from './components/pipes/sort.pipe';
 
 
 @NgModule({
@@ -17,12 +18,14 @@ import {FormsModule} from '@angular/forms';
     AppComponent,
     UserInfoComponent,
     ReposInfoComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [HttpService],
