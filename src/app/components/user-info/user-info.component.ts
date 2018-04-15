@@ -1,39 +1,25 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/Rx';
+import {Component} from '@angular/core';
 
 import {HttpService} from '../../service/http.service';
-import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'gh-user-info',
   templateUrl: './user-info.component.html',
   styleUrls: ['./user-info.component.scss']
 })
-export class UserInfoComponent implements OnInit, OnDestroy {
+export class UserInfoComponent  {
 
   user;
   notFound = true;
   username = `torvalds`;
 
-  // searchUser$ = new Subject<string>();
-
   constructor(private _httpService: HttpService) {
-    // this._httpService.getUser(this.searchUser$)
-    this._httpService.getUserInfo(this.username)
-      .subscribe(user => {
-        this.user = user;
-        this.notFound = false;
-      }, (error) => {
-        console.log('error');
-        this.notFound = true;
-        this.user = '';
-      });
+    this.searchUser();
   }
 
-  ngOnInit() {
-  }
-
+  /**
+   * Method for search user informations
+   */
   searchUser() {
     this._httpService.getUserInfo(this.username)
       .subscribe(user => {
@@ -42,9 +28,6 @@ export class UserInfoComponent implements OnInit, OnDestroy {
       }, (error) => {
         this.notFound = true;
       });
-  }
-
-  ngOnDestroy() {
   }
 
 }

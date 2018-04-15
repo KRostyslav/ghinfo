@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-
 import {HttpService} from './service/http.service';
 import {SortPipe} from './pipes/sort.pipe';
 import {AppRoutingModule} from './app-routing.module';

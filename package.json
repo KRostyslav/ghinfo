@@ -4,11 +4,13 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "doc:build": "compodoc -p src/tsconfig.app.json",
+    "doc:serve": "compodoc -s",
+    "doc:buildandserve": "compodoc -p src/tsconfig.app.json -s",
     "serve": "serve",
-    "start": "http-server",
     "test": "ng test",
-    "preinstall": "npm install -g http-server",
-    "postinstall": "ng build --env=prod"
+    "lint": "ng lint",
+    "build": "ng build -prod"
   },
   "private": true,
   "dependencies": {
@@ -44,9 +46,5 @@
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
-  },
-  "engines": {
-    "node": "8.11.1",
-    "npm": "5.6.0"
   }
 }

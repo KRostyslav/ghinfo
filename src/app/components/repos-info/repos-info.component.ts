@@ -1,16 +1,14 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
-import {SortPipe} from '../../pipes/sort.pipe';
 import {HttpService} from '../../service/http.service';
-import {Repo} from '../../model/repo';
 
 @Component({
   selector: 'gh-repos-info',
   templateUrl: './repos-info.component.html',
   styleUrls: ['./repos-info.component.scss']
 })
-export class ReposInfoComponent implements OnInit, OnDestroy {
+export class ReposInfoComponent implements OnInit {
   repos;
   username;
   private sub;
@@ -23,8 +21,15 @@ export class ReposInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this._route.params.subscribe(params => {
-      this.username = params['username'];
+      this.username = params[`username`];
     });
+    this.getRepos();
+  }
+
+  /**
+   * Method get array of repos information
+   */
+  getRepos() {
     this._httpService.getUserRepos(this.username)
       .subscribe((data) => {
         this.repos = data;
@@ -33,12 +38,13 @@ export class ReposInfoComponent implements OnInit, OnDestroy {
       });
   }
 
+  /**
+   * Method which select key for sorting data in table
+   * @param key
+   */
   sortOnClick(key) {
     this.key = key;
     this.reserve = !this.reserve;
-  }
-
-  ngOnDestroy() {
   }
 
 }
