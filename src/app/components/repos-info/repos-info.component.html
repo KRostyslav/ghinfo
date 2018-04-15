@@ -1,3 +1,28 @@
-<p>
-  repos-info works!
-</p>
+<div class="container">
+  <h3>
+    List of repositories!
+  </h3>
+  <div class="row">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Repo</th>
+        <th scope="col">Description</th>
+        <th scope="col">URL</th>
+        <th scope="col">Forks</th>
+        <th scope="col">Watchers</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let repo of repos" (click)="sortOnClick(repo.value)">
+        <td> {{repo.name}}</td>
+        <td> {{repo.description}}</td>
+        <td><a href="repo.url">{{repo.url}}</a></td>
+        <td> {{repo.forks_count}}</td>
+        <td> {{repo.watchers_count}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

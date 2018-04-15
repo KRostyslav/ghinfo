@@ -15,7 +15,7 @@
 
   <div class="info-block" *ngIf="notFound">
     <div class="card text-center">
-    <h2 class="text-danger">User {{username}} not found!</h2>
+      <h2 class="text-danger">User {{username}} not found!</h2>
     </div>
   </div>
 
@@ -43,7 +43,9 @@
         </div>
       </div>
       <div class="card-footer text-muted">
-        <a href="{{user.html_url}}" class="btn btn-primary">View profile</a></div>
+        <a href="{{user.html_url}}" class="btn btn-primary">View profile</a>
+        <a [routerLink]="['/repos', username]" class="btn btn-primary">View repos</a>
+      </div>
     </div>
   </div>
 </div>

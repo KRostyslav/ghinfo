@@ -6,7 +6,7 @@ import {NotFoundComponent} from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', component: UserInfoComponent},
-  {path: 'repos', component: ReposInfoComponent},
+  {path: 'repos/:username', component: ReposInfoComponent},
   {path: '**', component: NotFoundComponent}
 ];
 
