@@ -1,9 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 mt-3">
       <h3>Search</h3>
       <form action="">
         <div class="form-group">
+          <!--<input type="text" class="form-control"-->
+                 <!--placeholder="Enter Github Username..."-->
+                 <!--(keyup)="searchUser$.next($event.target.value)"> -->
           <input type="text" class="form-control"
                  placeholder="Enter Github Username..."
                  [(ngModel)]="username" name="username"
@@ -13,39 +16,41 @@
     </div>
   </div>
 
-  <div class="info-block" *ngIf="notFound">
-    <div class="card text-center">
-      <h2 class="text-danger">User {{username}} not found!</h2>
-    </div>
-  </div>
-
-  <div class="info-block" *ngIf="!notFound">
-    <div class="card text-center">
-      <div class="card-header">
-        <h3>{{user.name}}</h3>
+    <div class="info-block" *ngIf="notFound">
+      <div class="card text-center">
+        <h2 class="text-danger">User {{username}} not found!</h2>
       </div>
-      <div class="card-body row">
-        <div class="card-image col-md-6">
-          <img class="avatar" src="{{user.avatar_url}}" alt="">
+    </div>
+
+    <div class="info-block" *ngIf="!notFound">
+      <div class="card text-center">
+        <div class="card-header">
+          <h3>{{user.name}}</h3>
         </div>
-        <div class="card-info col-md-6">
-          <h5 class="card-text"><b>Bio: </b>{{user.bio}}</h5>
-          <h5 class="card-text"><b>Company: </b>{{user.company}}</h5>
-          <h5 class="card-text"><b>Location: </b>{{user.location}}</h5>
-          <h5 class="card-text"><b>Email: </b>{{user.email}}</h5>
-          <h5 class="card-text"><b>Member since: </b>{{user.created_at | date: 'dd/MM/yyyy'}}</h5>
-          <h5 class="card-text"><b>Updated: </b>{{user.updated_at | date: 'dd/MM/yyyy'}}</h5>
-          <div class="badges">
-            <span class="badge badge-primary">{{user.followers}} Followers </span>
-            <span class="badge badge-success">{{user.public_repos}} Public repos</span>
-            <span class="badge badge-info">{{user.public_gists}} Public Gists</span>
+        <div class="card-body row">
+          <div class="card-image col-md-6">
+            <img class="avatar" src="{{user.avatar_url}}" alt="">
+          </div>
+          <div class="card-info col-md-6">
+            <h5 class="card-text" *ngIf="user.bio"><b>Bio: </b>{{user.bio}}</h5>
+            <h5 class="card-text" *ngIf="user.company"><b>Company: </b>{{user.company}}</h5>
+            <h5 class="card-text" *ngIf="user.location"><b>Location: </b>{{user.location}}</h5>
+            <h5 class="card-text" *ngIf="user.email"><b>Email: </b>{{user.email}}</h5>
+            <h5 class="card-text" *ngIf="user.created_at"><b>Member since: </b>{{user.created_at | date: 'dd/MM/yyyy'}}
+            </h5>
+            <h5 class="card-text" *ngIf="user.updated_at"><b>Updated: </b>{{user.updated_at | date: 'dd/MM/yyyy'}}</h5>
+            <div class="badges">
+              <span class="badge badge-primary">{{user.followers}} Followers </span>
+              <span class="badge badge-success">{{user.public_repos}} Public repos</span>
+              <span class="badge badge-info">{{user.public_gists}} Public Gists</span>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="card-footer text-muted">
-        <a href="{{user.html_url}}" class="btn btn-primary">View profile</a>
-        <a [routerLink]="['/repos', username]" class="btn btn-primary">View repos</a>
+        <div class="card-footer text-muted">
+          <a href="{{user.html_url}}" class="btn btn-primary">View profile</a>
+          <a [routerLink]="['/repos', username]" class="btn btn-primary">View repos</a>
+        </div>
       </div>
     </div>
-  </div>
+
 </div>

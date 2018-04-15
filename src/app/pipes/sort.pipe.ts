@@ -1,11 +1,12 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
-  name: 'sortBy'
+  name: 'sortBy',
+  pure: false
 })
 export class SortPipe implements PipeTransform {
 
-  transform(array: Array<any>, key: string): Array<any> {
+  transform(array: Array<any>, key: string, reverse: boolean): Array<any> {
     if (array !== undefined) {
       array.sort((a: any, b: any) => {
         if (a[key] < b[key]) {
@@ -15,7 +16,10 @@ export class SortPipe implements PipeTransform {
         } else {
           return 0;
         }
-      }).reverse();
+      });
+      if (reverse) {
+        array.reverse();
+      }
     }
     return array;
   }
